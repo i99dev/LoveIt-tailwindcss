@@ -153,7 +153,7 @@ var Theme = /*#__PURE__*/function () {
       this.util.forEach(document.getElementsByClassName('theme-switch'), function ($themeSwitch) {
         $themeSwitch.addEventListener('click', function () {
           if (document.body.getAttribute('theme') === 'dark') document.body.setAttribute('theme', 'light');else document.body.setAttribute('theme', 'dark');
-          if (document.body.getAttribute('class').includes('dark')) document.body.setAttribute('class', '');else document.body.setAttribute('class', 'dark');
+          if (document.body.classList.contains('dark')) document.body.classList.remove('dark');else document.body.classList.add('dark');
           _this2.isDark = !_this2.isDark;
           window.localStorage && localStorage.setItem('theme', _this2.isDark ? 'dark' : 'light');
 

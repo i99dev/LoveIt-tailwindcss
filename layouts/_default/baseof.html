@@ -14,10 +14,10 @@
         {{- partial "head/seo.html" . -}}
     </head>
     {{- /* Check theme isDark before body rendering */ -}}
-    <body class="light" data-header-desktop="{{ .Site.Params.header.desktopMode }}" data-header-mobile="{{ .Site.Params.header.mobileMode }}">
-        {{- $theme := .Site.Params.defaulttheme -}}
+    {{- $theme := .Site.Params.defaulttheme -}}
+    <body data-header-desktop="{{ .Site.Params.header.desktopMode }}" data-header-mobile="{{ .Site.Params.header.mobileMode }}">
         <script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('{{ $theme }}' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '{{ $theme }}' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
-        <script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : document.body.setAttribute('class', 'dark'));</script>
+        <script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('{{ $theme }}' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '{{ $theme }}' === 'dark')) && document.body.classList.add('dark');</script>
         <div id="mask"></div>
 
         {{- /* Body wrapper */ -}}
