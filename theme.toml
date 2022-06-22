@@ -1,6 +1,6 @@
 # theme.toml template for a Hugo theme
 
-name = "LoveIt"
+name = "LoveIt-tailwindcss"
 license = "MIT"
 licenselink = "https://github.com/dillonzq/LoveIt/blob/master/LICENSE"
 description = "A Clean, Elegant but Advanced Hugo Theme for Hugo."
