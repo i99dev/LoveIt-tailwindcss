@@ -18,3 +18,5 @@ https://hugoloveit.com/theme-documentation-basics/
 when you add themes to you projects use this cmd:
 
 ```git submodule add https://github.com/i99dev/LoveIt-tailwindcss.git  themes/LoveIt-tailwindcss```
+
+and go to ` themes/LoveIt-tailwindcss` folder and run `npm install or yarn install`` 
