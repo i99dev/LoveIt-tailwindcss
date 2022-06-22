@@ -28,25 +28,23 @@ name: github pages
 on:
   push:
     branches:
-      - main  # Set a branch to deploy
-  pull_request:
+      - main
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
-   steps:
+    runs-on: ubuntu-18.04
+    steps:
       - name: Git checkout
         uses: actions/checkout@v2.3.3
 
       - name: Update theme
         run: git submodule update --init --recursive
-  
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+
+      - name: Setup hugo
+        uses: peaceiris/actions-hugo@v2.4.13
         with:
           hugo-version: 'latest'
-          extended: true
-        
+
       - name: Build
         run: hugo --minify
 
