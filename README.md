@@ -20,3 +20,42 @@ when you add themes to you projects use this cmd:
 ```git submodule add https://github.com/i99dev/LoveIt-tailwindcss.git  themes/LoveIt-tailwindcss```
 
 and go to ` themes/LoveIt-tailwindcss` folder and run `npm install or yarn install`` 
+
+on your project root you can create github/workflow/gh-pages.yml file and add this content:
+```
+name: github pages
+
+on:
+  push:
+    branches:
+      - main  # Set a branch to deploy
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+   steps:
+      - name: Git checkout
+        uses: actions/checkout@v2.3.3
+
+      - name: Update theme
+        run: git submodule update --init --recursive
+  
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          extended: true
+        
+      - name: Build
+        run: hugo --minify
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+
+```
+any update add to themes ou will git when you will push to master anu new content
