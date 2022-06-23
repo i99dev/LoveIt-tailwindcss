@@ -67,25 +67,23 @@
     />
   </a>
 {{- else -}}
-  <div class="max-h-52 overflow-hidden">
-    <img
-      class="rounded-t w-full lazyload{{ with .Class }}{{ . }}{{ end }}"
-      src="{{ $loading.RelPermalink }}"
-      data-src="{{ $src | safeURL }}"
-      data-srcset="{{ $small | safeURL }}, {{ $src | safeURL }} 1.5x, {{ $large | safeURL }} 2x"
-      data-sizes="auto"
-      alt="{{ $alt }}"
-      title="{{ .Title | default $alt }}"
-      {{- with
-        $width
-      }}
-        width="{{ . }}"
-      {{ end }}
-      {{- with
-        $height
-      }}
-        height="{{ . }}"
-      {{ end }}
-    />
-  </div>
+<img
+class="rounded-t w-full lazyload{{ with .Class }}{{ . }}{{ end }}"
+src="{{ $loading.RelPermalink }}"
+data-src="{{ $src | safeURL }}"
+data-srcset="{{ $small | safeURL }}, {{ $src | safeURL }} 1.5x, {{ $large | safeURL }} 2x"
+data-sizes="auto"
+alt="{{ $alt }}"
+title="{{ .Title | default $alt }}"
+{{- with
+  $width
+}}
+  width="{{ . }}"
+{{ end }}
+{{- with
+  $height
+}}
+  height="{{ . }}"
+{{ end }}
+/>
 {{- end -}}

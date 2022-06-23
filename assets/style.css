@@ -689,6 +689,18 @@ video {
   max-height: 12rem;
 }
 
+.max-h-64 {
+  max-height: 16rem;
+}
+
+.max-h-16 {
+  max-height: 4rem;
+}
+
+.max-h-14 {
+  max-height: 3.5rem;
+}
+
 .w-full {
   width: 100%;
 }
@@ -715,6 +727,10 @@ video {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
 }
 
 .overflow-auto {
@@ -814,6 +830,10 @@ video {
   padding-top: 0.5rem;
 }
 
+.text-justify {
+  text-align: justify;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -824,12 +844,21 @@ video {
   line-height: 1.25rem;
 }
 
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .font-medium {
   font-weight: 500;
 }
 
 .font-normal {
   font-weight: 400;
+}
+
+.font-light {
+  font-weight: 300;
 }
 
 .text-white {

@@ -52,7 +52,7 @@
     </div>
 
     {{- /* Summary content */ -}}
-    <div class="max-h-12 overflow-hidden text-ellipsis">
+    <div class="max-h-10 overflow-hidden text-ellipsis text-justify font-light text-sm">
       {{- with .Summary -}} {{- dict "Content" . "Ruby" $params.ruby "Fraction"
       $params.fraction "Fontawesome" $params.fontawesome | partial
       "function/content.html" | safeHTML -}} {{- else -}} {{- .Description |
