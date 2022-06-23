@@ -33,7 +33,8 @@
             {{- with $height }} height="{{ . }}"{{ end }} />
     </a>
 {{- else -}}
-    <img
+<div class="max-h-40 overflow-hidden">
+        <img
         class="rounded-t w-full object-scale-down lazyload{{ with .Class }} {{ . }}{{ end }}"
         src="{{ $loading.RelPermalink }}"
         data-src="{{ $src | safeURL }}"
@@ -43,4 +44,6 @@
         title="{{ .Title | default $alt }}"
         {{- with $width }} width="{{ . }}"{{ end }}
         {{- with $height }} height="{{ . }}"{{ end }} />
+</div>
+
 {{- end -}}
