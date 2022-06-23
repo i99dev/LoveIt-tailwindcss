@@ -34,7 +34,7 @@
     </a>
 {{- else -}}
     <img
-        class="rounded-t w-full object-scale-down lazyload{{ with .Class }} {{ . }}{{ end }}"
+        class="rounded-t object-none w-full lazyload{{ with .Class }} {{ . }}{{ end }}"
         src="{{ $loading.RelPermalink }}"
         data-src="{{ $src | safeURL }}"
         data-srcset="{{ $small | safeURL }}, {{ $src | safeURL }} 1.5x, {{ $large | safeURL }} 2x"
