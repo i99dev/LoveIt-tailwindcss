@@ -31,30 +31,32 @@
   {{- end -}}
   <div class="p-4">
     {{- /* Title */ -}}
-    <h1 class="sm:font-bold text-2xl font-medium" itemprop="name headline">
+    <h1 class="sm:font-bold sm:text-xl text-lg truncate font-medium" itemprop="name headline">
       <a href="{{ .RelPermalink }}">{{ .Title | emojify }}</a>
     </h1>
 
     {{- /* Meta */ -}}
-    <div class="post-meta">
-      {{- $author := $params.author | default .Site.Author.name | default (T
-        "author")
-      -}}
-      {{- $authorLink := $params.authorlink | default
-        .Site.Author.link | default .Site.Home.RelPermalink
-      -}}
-      <span class="post-author">
-        {{- $options := dict "Class" "author" "Destination" $authorLink "Title"
-          "Author" "Rel" "author" "Icon" (dict "Class" "fas fa-user-circle fa-fw")
-          "Content" $author
+    <div class="flex flex-col">
+      <div>
+        {{- $author := $params.author | default .Site.Author.name | default (T
+          "author")
         -}}
-        {{- partial "plugin/a.html" $options -}}
-      </span>
-
-      {{- with .Site.Params.dateFormat | default "2006-01-02" |
+        {{- $authorLink := $params.authorlink | default
+          .Site.Author.link | default .Site.Home.RelPermalink
+        -}}
+        <span class="post-author">
+          {{- $options := dict "Class" "author" "Destination" $authorLink "Title"
+            "Author" "Rel" "author" "Icon" (dict "Class" "fas fa-user-circle fa-fw")
+            "Content" $author
+          -}}
+          {{- partial "plugin/a.html" $options -}}
+        </span>
+      </div>
+      <div class="flex flex-row bg-gray-200 rounded">
+         {{- with .Site.Params.dateFormat | default "2006-01-02" |
         .PublishDate.Format
       -}}
-        &nbsp;<span class="post-publish">
+        &nbsp;<span class="text-sm">
           {{- printf `<time datetime="%v">%v</time>` . . | dict "Date" | T
             "publishedOnDate" | safeHTML
           -}}
@@ -74,11 +76,13 @@
       {{- with
         delimit $categories "&nbsp;"
       -}}
-        &nbsp;<span class="post-category">
+        &nbsp;<span class="text-sm">
           {{- dict "Categories" . | T "includedInCategories" | safeHTML -}}
         </span>
       {{- end -}}
     </div>
+      </div>
+     
 
     {{- /* Summary content */ -}}
     <div
@@ -97,9 +101,11 @@
     </div>
 
     {{- /* Footer */ -}}
-    <div class="flex flex-row flex-nowrap justify-between pt-2">
+    <div
+      class="flex sm:flex-row flex-col-reverse flex-nowrap justify-between pt-2"
+    >
       <a
-        class="flex justify-end font-normal text-sm border border-gray-500  rounded px-1"
+        class="flex justify-end font-normal text-sm border border-gray-500  rounded px-1 w-fit sm:mt-0 mt-2"
         href="{{ .RelPermalink }}"
         >{{ T "readMore" }}</a
       >
@@ -115,7 +121,7 @@
               | $.Site.GetPage
             -}}
             <a
-              class="bg-gray-600 text-white  rounded text-sm max-h-5 px-1"
+              class="bg-gray-600 text-white  rounded text-sm max-h-5 px-1 "
               href="{{ $tag.RelPermalink }}"
               >{{ $tag.Title }}</a
             >
