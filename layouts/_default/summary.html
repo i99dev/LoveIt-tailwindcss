@@ -52,7 +52,7 @@
           {{- partial "plugin/a.html" $options -}}
         </span>
       </div>
-      <div class="flex flex-row bg-gray-200 rounded">
+      <div class="flex flex-row bg-gray-200 rounded w-fit pt-2 px-2 my-1 dark:bg-gray-500">
          {{- with .Site.Params.dateFormat | default "2006-01-02" |
         .PublishDate.Format
       -}}
