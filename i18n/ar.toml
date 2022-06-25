@@ -53,8 +53,15 @@ other = "يعمل الموقع بنظام {{ .Hugo }} | التصميم مقدم 
 [valineLang]
 other = "en"
 
-[valinePlaceholder]
-other = "تعليقك..."
+# === partials/series.html ===
+[series]
+other = "هذا المقال جزء من سلسلة."
+
+[Part]
+other = "الجزء"
+
+[This_article]
+other = "المقالة الحاليه"
 
 [facebookLanguageCode]
 other = "ar_AR"

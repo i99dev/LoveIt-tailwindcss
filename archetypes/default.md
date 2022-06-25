@@ -12,6 +12,7 @@ images: []
 
 tags: []
 categories: []
+series: [] # Series posts will be grouped by series
 
 featuredImage: ""
 featuredImagePreview: ""
