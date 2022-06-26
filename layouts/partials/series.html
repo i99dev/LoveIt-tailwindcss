@@ -2,7 +2,7 @@
 
 <div>
     <div class="flex flex-row">{{ T "series" }} <span class="font-bold ps-2">{{ index .Params.series 0 }}</span> </div>
-    <ul class=" pt-5">
+    <ul class=" pt-5 md:text-base text-sm truncate">
         {{ range $num,$post := (index .Site.Taxonomies.series (index .Params.series 0 | urlize)).Pages.ByDate }}
             {{ if eq $post.Permalink $.Page.Permalink }}
                 <li class="list-group-item active">

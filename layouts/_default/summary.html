@@ -31,7 +31,7 @@
   {{- end -}}
   <div class="p-4">
     {{- /* Title */ -}}
-    <h1 class="sm:font-bold sm:text-xl text-lg truncate font-medium" itemprop="name headline">
+    <h1 class="sm:font-bold sm:text-xl text-base truncate font-medium" itemprop="name headline">
       <a href="{{ .RelPermalink }}">{{ .Title | emojify }}</a>
     </h1>
 
@@ -86,7 +86,7 @@
 
     {{- /* Summary content */ -}}
     <div
-      class="max-h-10 overflow-hidden text-ellipsis text-justify font-light text-sm"
+      class="max-h-12 overflow-hidden text-ellipsis text-justify font-light sm:text-base text-xs"
     >
       {{- with .Summary -}}
         {{- dict "Content" . "Ruby" $params.ruby "Fraction"
