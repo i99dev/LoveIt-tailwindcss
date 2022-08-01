@@ -5,7 +5,7 @@
     {{- $avatar = md5 . | printf "https://www.gravatar.com/avatar/%v?s=240&d=mp" -}}
     {{- end -}}
     {{- if $avatar -}}
-    <div class="home-avatar">
+    <div class="home-avatar w-full h-full">
         {{- $menus := $.Site.Menus.main | default slice -}}
         {{- with index $menus 0 -}}
         {{- $url := .URL | relLangURL -}}
