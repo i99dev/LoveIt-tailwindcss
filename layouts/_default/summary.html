@@ -21,7 +21,7 @@
     {{- $image = .RelPermalink -}}
   {{- end -}}
   {{- with $image -}}
-    <div class="featured-image-preview">
+    <div class="featured-image-preview hidden sm:block">
       <a href="{{ $.RelPermalink }}">
         {{- dict "Src" . "Title" $.Description "Resources" $.Resources | partial
           "plugin/img-home.html"
