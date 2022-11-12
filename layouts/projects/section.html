@@ -20,7 +20,7 @@
             {{- range $pages.PageGroups -}}
                 <h3 class="group-title">{{ .Key }}</h3>
                 {{- range .Pages -}}
-                {{- .Render "summary" -}}
+                    {{- .Render "summary" -}}
                 {{- end -}}
             {{- end -}}
             {{- partial "paginator.html" . -}}
