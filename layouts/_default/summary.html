@@ -58,7 +58,7 @@
 
     {{- /* Summary content */ -}}
     <div
-      class="max-h-12 overflow-hidden text-ellipsis text-justify font-light sm:text-base text-xs"
+      class="max-h-12 overflow-hidden text-ellipsis text-justify text-xs"
     >
       {{- with .Summary -}}
         {{- dict "Content" . "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}
@@ -75,12 +75,15 @@
         >{{ T "readMore" }}</a
       >
       {{- with .Params.tags -}}
-        <div class="flex flex-row space">
+      {{/*  tag class  */}}
+        <div class="flex flex-wrap sm:mt-0 mt-2">
           <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;
           {{- range $index, $value := . -}}
               {{- if gt $index 0 }},&nbsp;{{ end -}}
               {{- $tag := partialCached "function/path.html" $value $value | printf "/tags/%v" | $.Site.GetPage -}}
-              <a href="{{ $tag.RelPermalink }}">{{ $tag.Title }}</a>
+              <a href="{{ $tag.RelPermalink }}"
+              class="inline-flex items-baseline px-2 py-0.5 rounded-full text-xs  bg-green-100 text-green-800 md:mt-2 lg:mt-0"
+              >{{ $tag.Title }}</a>
           {{- end -}}
         </div>
       {{- end -}}
