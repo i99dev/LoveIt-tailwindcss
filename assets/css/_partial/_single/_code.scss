@@ -41,6 +41,8 @@ code, pre, .highlight table, .highlight tr, .highlight td {
   font-family: var(--code-font-family);
   font-size: var(--code-font-size);
   line-height: 1.4em;
+  direction: ltr !important;
+  text-align: left !important;
   margin: .5rem 0;
 
   .table-wrapper {
