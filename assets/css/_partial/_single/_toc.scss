@@ -28,24 +28,6 @@
         padding-left: 1.5rem;
       }
     }
-    [dir="rtl"] &,
-    :dir(rtl) & {
-      ul {
-        padding-left: 0;
-        padding-right: .8rem;
-        text-indent: 0.85rem;
-
-        ul {
-          padding-left: 0;
-          padding-right: 1.5rem;
-        }
-
-        a:first-child::before {
-          margin-right: 0;
-          margin-left: .5rem;
-        }
-      }
-    }
   }
 
   ruby {
@@ -68,17 +50,15 @@
 #toc-auto {
   display: block;
   position: absolute;
-  width: 10000px;
+  width: 20%;
   max-width: 0;
   padding: 0 .8rem;
+  border-left: 4px solid $global-border-color;
   @include overflow-wrap(break-word);
   box-sizing: border-box;
   top: 10rem;
-  visibility: hidden;
-
-  // Default LTR position and border
   left: 0;
-  border-left: 4px solid $global-border-color;
+  visibility: hidden;
 
   [data-header-desktop=normal] & {
     top: 5rem;
@@ -132,21 +112,6 @@
   }
 }
 
-:dir(rtl) #toc-auto,
-#toc-auto[dir="rtl"] {
-  left: auto;
-  right: 0;
-  border-left: none;
-  border-right: 4px solid $global-border-color;
-
-  [theme=dark] & {
-    border-right-color: $global-border-color-dark;
-  }
-}
-
-
-
-
 #toc-static {
   display: none;
   margin: .8rem 0;
@@ -186,6 +151,86 @@
 
       [theme=dark] & {
         background: darken($code-background-color-dark, 3%);
+      }
+    }
+  }
+}
+
+/* RTL support */
+[dir="rtl"] {
+  .toc {
+    .toc-content {
+      ul {
+        text-indent: 0.85rem;
+        padding-right: .8rem;
+        padding-left: 0;
+
+        a:first-child::before {
+          margin-left: .5rem;
+          margin-right: 0;
+        }
+
+        ul {
+          padding-right: 1.5rem;
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  #toc-auto {
+    border-right: 4px solid $global-border-color;
+    border-left: none;
+    right: 0;
+    left: auto;
+    text-align: right;
+
+    @include blur;
+
+    [class=dark] & {
+      border-right-color: $global-border-color-dark;
+    }
+
+    .toc-title {
+      margin: .8rem 0;
+    }
+
+    .toc-content {
+      > nav > ul {
+        margin: .625rem 0;
+      }
+
+      ul ul {
+        display: none;
+      }
+
+      .has-active > ul {
+        display: block;
+      }
+
+      a.active {
+        font-weight: bold;
+        color: $single-link-color;
+
+        [theme=dark] & {
+          color: $single-link-color-dark;
+        }
+
+        &::before {
+          color: $single-link-hover-color;
+
+          [theme=dark] & {
+            color: $single-link-hover-color-dark;
+          }
+        }
+      }
+    }
+  }
+
+  #toc-static {
+    .toc-content {
+      > nav > ul {
+        padding: .4rem 1.8rem .4rem 1rem;
       }
     }
   }

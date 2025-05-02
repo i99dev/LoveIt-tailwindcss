@@ -207,6 +207,9 @@
   .sticky {
     position: sticky;
   }
+  .start-0 {
+    inset-inline-start: calc(var(--spacing) * 0);
+  }
   .top-8 {
     top: calc(var(--spacing) * 8);
   }
