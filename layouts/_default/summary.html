@@ -69,7 +69,7 @@
               {{- if gt $index 0 }}{{ end -}}
               {{- $tag := partialCached "function/path.html" $value $value | printf "/tags/%v" | $.Site.GetPage -}}
               <a href="{{ $tag.RelPermalink }}"
-              class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-green-300 transition">
+              class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-red-400 text-green-800 hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-green-300 transition">
               {{ $tag.Title }}</a>
           {{- end -}}
         </div>
