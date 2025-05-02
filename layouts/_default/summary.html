@@ -2,7 +2,7 @@
 
 
 <article
-  class="border rounded shadow-sm bg-white dark:bg-gray-800 dark:border-gray-600 mb-6"
+  class="border rounded shadow-sm"
   itemscope
   itemtype="http://schema.org/Article"
 >
@@ -29,17 +29,9 @@
 
     {{- /* Meta */ -}}
     <div class="flex flex-col">
-      <div>
-        {{- $author := $params.author | default .Site.Author.name | default (T "author") -}}
-        {{- $authorLink := $params.authorlink | default .Site.Author.link | default .Site.Home.RelPermalink -}}
-        <span class="post-author">
-          {{- $options := dict "Class" "author" "Destination" $authorLink "Title" "Author" "Rel" "author" "Icon" (dict "Class" "fas fa-user-circle fa-fw") "Content" $author -}}
-          {{- partial "plugin/a.html" $options -}}
-        </span>
-      </div>
-      <div class="flex flex-row bg-gray-200 rounded w-fit pt-2 px-2 my-1 dark:bg-gray-500">
+      <div class="flex flex-row">
         {{- with .Site.Params.dateFormat | default "2006-01-02" | .PublishDate.Format -}}
-          &nbsp;<span class="text-sm">
+          &nbsp;<span class="text-xs">
             {{- printf `<time datetime="%v">%v</time>` . . | dict "Date" | T "publishedOnDate" | safeHTML -}}
           </span>
         {{- end -}}
@@ -49,7 +41,7 @@
           {{- $categories = $categories | append (printf `<a href="%v"><i class="far fa-folder fa-fw" aria-hidden="true"></i>%v</a>` $category.RelPermalink $category.Title) -}}
         {{- end -}}
         {{- with delimit $categories "&nbsp;" -}}
-          &nbsp;<span class="text-sm">
+          &nbsp;<span class="text-xs">
             {{- dict "Categories" . | T "includedInCategories" | safeHTML -}}
           </span>
         {{- end -}}
@@ -68,22 +60,17 @@
     </div>
 
     {{- /* Footer */ -}}
-    <div class="flex sm:flex-row flex-col-reverse flex-nowrap justify-between pt-2">
-      <a
-        class="flex justify-end font-normal text-sm border border-gray-500 rounded px-1 w-fit sm:mt-0 mt-2"
-        href="{{ .RelPermalink }}"
-        >{{ T "readMore" }}</a
-      >
+    <div class="flex flex-col-reverse sm:flex-row justify-between pt-2">
       {{- with .Params.tags -}}
       {{/*  tag class  */}}
-        <div class="flex flex-wrap sm:mt-0 mt-2">
+      <div class="flex flex-wrap gap-2">
           <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;
           {{- range $index, $value := . -}}
-              {{- if gt $index 0 }},&nbsp;{{ end -}}
+              {{- if gt $index 0 }}{{ end -}}
               {{- $tag := partialCached "function/path.html" $value $value | printf "/tags/%v" | $.Site.GetPage -}}
               <a href="{{ $tag.RelPermalink }}"
-              class="inline-flex items-baseline px-2 py-0.5 rounded-full text-xs  bg-green-100 text-green-800 md:mt-2 lg:mt-0"
-              >{{ $tag.Title }}</a>
+              class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-green-300 transition">
+              {{ $tag.Title }}</a>
           {{- end -}}
         </div>
       {{- end -}}
