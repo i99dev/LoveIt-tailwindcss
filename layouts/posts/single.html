@@ -12,10 +12,10 @@
 
     {{- /* Auto TOC */ -}}
     {{- if ne $toc.enable false -}}
-        <div class="toc" id="toc-auto">
-            <h2 class="toc-title">{{ T "contents" }}</h2>
-            <div class=" toc-content{{ if eq $toc.auto false }} always-active{{ end }}" id="toc-content-auto"></div>
-        </div>
+    <div class="toc" id="toc-auto">
+        <div class="toc-title">{{ T "contents" }}</div>
+        <div class="text-xs toc-content{{ if eq $toc.auto false }} always-active{{ end }}" id="toc-content-auto"></div>
+    </div>
     {{- end -}}
 
     <article dir="{{ .Site.Params.dir}}" class="page single">
@@ -76,12 +76,12 @@
         {{ partial "series.html" . }}
         {{- /* Static TOC */ -}}
         {{- if ne $toc.enable false -}}
-            <div class="details toc" id="toc-static"  data-kept="{{ if $toc.keepStatic }}true{{ end }}">
+            <div class="details toc space-y-1" id="toc-static"  data-kept="{{ if $toc.keepStatic }}true{{ end }}">
                 <div class="details-summary toc-title">
                     <span>{{ T "contents" }}</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static">
+                <div class="text-xs  details-content toc-content" id="toc-content-static">
                     {{- dict "Content" .TableOfContents "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}
                 </div>
             </div>
