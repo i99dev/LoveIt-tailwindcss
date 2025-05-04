@@ -23,8 +23,8 @@
   {{- end -}}
   <div class="p-4">
     {{- /* Title */ -}}
-    <h1 class="sm:font-bold sm:text-xl text-base truncate font-medium" itemprop="name headline">
-      <a href="{{ .RelPermalink }}">{{ .Title | emojify }}</a>
+    <h1 class="truncate" itemprop="name headline">
+      <a class="sm:font-bold sm:text-xl text-base font-medium" href="{{ .RelPermalink }}">{{ .Title | emojify }}</a>
     </h1>
 
     {{- /* Meta */ -}}
@@ -50,7 +50,7 @@
 
     {{- /* Summary content */ -}}
     <div
-      class="max-h-12 overflow-hidden text-ellipsis text-justify text-xs"
+      class="max-h-16 overflow-hidden"
     >
       {{- with .Summary -}}
         {{- dict "Content" . "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}
@@ -63,7 +63,7 @@
     <div class="flex flex-col-reverse sm:flex-row justify-between pt-2">
       {{- with .Params.tags -}}
       {{/*  tag class  */}}
-      <div class="flex flex-wrap gap-2">
+      <div class="flex flex-wrap gap-2 flex-">
           <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;
           {{- range $index, $value := . -}}
               {{- if gt $index 0 }}{{ end -}}
